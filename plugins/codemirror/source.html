@@ -138,14 +138,14 @@ function start()
 
     // [FIX] #6 z-index issue with table panel and source code dialog
     //	editor.selection.getBookmark();
-    
+
 	html = html.replace(/<span\s+style="display: none;"\s+class="CmCaReT"([^>]*)>([^<]*)<\/span>/gm, String.fromCharCode(chr));
 	editor.dom.remove(editor.dom.select('.CmCaReT'));
-    
+
     // Hide TinyMCE toolbar panels, [FIX] #6 z-index issue with table panel and source code dialog
     // https://github.com/christiaan/tinymce-codemirror/issues/6
     tinymce.each(editor.contextToolbars, function(toolbar) { if (toolbar.panel) { toolbar.panel.hide(); } });
-    
+
 	CodeMirror.defineInitHook(function(inst)
 	{
 		// Move cursor to correct position:
@@ -228,7 +228,7 @@ function submit()
     {
         editor.setContent(codemirror.getValue().replace(cc, '<span id="CmCaReT"></span>'));
     }
-    
+
 	editor.isNotDirty = !isDirty;
 	if (isDirty) {
 		editor.nodeChanged();
@@ -245,20 +245,6 @@ function submit()
 
 </script>
 <style type="text/css">
-body {
-	margin: 0;
-}
-
-.CodeMirror {
-	height: 100%;
-	font-size: 12px;
-	line-height: 18px;
-}
-
-.CodeMirror-activeline-background {
-	background: #e8f2ff !important;
-}
-
 .cm-trailingspace {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUXCToH00Y1UgAAACFJREFUCNdjPMDBUc/AwNDAAAFMTAwMDA0OP34wQgX/AQBYgwYEx4f9lQAAAABJRU5ErkJggg==);
 	background-position: bottom left;
